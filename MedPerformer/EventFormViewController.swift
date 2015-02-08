@@ -18,10 +18,13 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     
     @IBOutlet weak var eventPicker: UIPickerView!
     @IBOutlet weak var eventLabel: UILabel!
+    @IBOutlet weak var commentField: UITextField!
     
     func updateLabel(){
         let selectedTime = eventChoices[0][eventPicker.selectedRowInComponent(0)]
         let event = eventChoices[1][eventPicker.selectedRowInComponent(1)]
+        
+        
         eventLabel.text = "Chose \(event) for \(selectedTime) mins"
     }
     
@@ -31,11 +34,14 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let selectedDuration = eventChoices[0][eventPicker.selectedRowInComponent(0)]
+        let eventSelected = eventChoices[1][eventPicker.selectedRowInComponent(1)]
+        var selectedDuraNum = selectedDuration.toInt()
         var user = PFUser.currentUser()
-        /*var event = PFObject(className: "event")
-        event.setObject("EHR", forKey: "category")
-        event.setObject(8, forKey: "duration")
-        event.setObject("Training", forKey: "comment")
+        var event = PFObject(className: "event")
+        event.setObject(eventSelected, forKey: "category")
+        event.setObject(selectedDuraNum, forKey: "duration")
+        event.setObject(commentField.text, forKey: "comment")
         event.setObject(user, forKey: "user")
         event.saveInBackgroundWithBlock {
             (success: Bool!, error: NSError!) -> Void in
@@ -48,7 +54,7 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
             }
         
         }
-*/
+
         //playing with query
         /*var query = PFQuery(className: "event")
         query.whereKey("user", equalTo: user)

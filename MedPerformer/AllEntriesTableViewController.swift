@@ -72,7 +72,7 @@ class AllEntriesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        cell.textLabel.text = "test"
+        //cell.textLabel.text = "test"
         
         // Configure the cell...
         

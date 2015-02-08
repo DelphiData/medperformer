@@ -46,7 +46,7 @@ class RecordsTableTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
     
-        cell.textLabel.text = dateRanges[indexPath.row]
+        //cell.textLabel.text = dateRanges[indexPath.row]
 
         // Configure the cell...
 
