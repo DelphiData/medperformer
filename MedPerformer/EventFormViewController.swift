@@ -19,6 +19,29 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
     @IBOutlet weak var eventPicker: UIPickerView!
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var commentField: UITextField!
+    @IBAction func submitEvent(sender: AnyObject)
+    {
+        let selectedDuration = eventChoices[0][eventPicker.selectedRowInComponent(0)]
+        let eventSelected = eventChoices[1][eventPicker.selectedRowInComponent(1)]
+        var selectedDuraNum = selectedDuration.toInt()
+        var user = PFUser.currentUser()
+        var event = PFObject(className: "event")
+        event.setObject(eventSelected, forKey: "category")
+        event.setObject(selectedDuraNum, forKey: "duration")
+        event.setObject(commentField.text, forKey: "comment")
+        event.setObject(user, forKey: "user")
+        event.saveInBackgroundWithBlock {
+            (success: Bool!, error: NSError!) -> Void in
+            
+            if success == true {
+                println("event created")
+            }
+            else {
+                println(error)
+            }
+        }
+
+    }
     
     
     func updateLabel()
