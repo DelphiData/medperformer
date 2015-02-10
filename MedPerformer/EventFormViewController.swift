@@ -34,7 +34,7 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
             (success: Bool!, error: NSError!) -> Void in
             
             if success == true {
-                println("event created")
+                self.updateLabel()
             }
             else {
                 println(error)
@@ -50,12 +50,12 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         let event = eventChoices[1][eventPicker.selectedRowInComponent(1)]
         
         
-        eventLabel.text = "Chose \(event) for \(selectedTime) mins"
+        eventLabel.text = "Successfull submission of \(event) for \(selectedTime) mins"
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        updateLabel()
+        //place holder for updateLabel()
     }
     
     override func viewDidLoad()
@@ -94,7 +94,19 @@ class EventFormViewController: UIViewController,UIPickerViewDataSource,UIPickerV
         }
             return 300.0;
     }
+    //next to functs close keyboard
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
+    {
+        self.view.endEditing(true)
+    }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        eventLabel.resignFirstResponder()
+        
+        return true
+        
+    } // called when 'return' key pressed. return NO to ignore
     
     
     /*
