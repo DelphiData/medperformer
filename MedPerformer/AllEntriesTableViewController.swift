@@ -10,9 +10,11 @@ import UIKit
 
 class AllEntriesTableViewController: UITableViewController {
     
-
+    var passedValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         println(PFUser.currentUser())
         

@@ -401,7 +401,7 @@
             <objects>
                 <tableViewController title="All Entries" id="h4m-CT-D85" customClass="AllEntriesTableViewController" customModule="MedPerformer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mm0-l9-8Jq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -444,6 +444,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="History" id="HA9-j4-OpO"/>
+                    <connections>
+                        <segue destination="h4m-CT-D85" kind="show" identifier="recordsToList" id="gZQ-BG-zK0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghV-Xj-hXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,33 @@ class RecordsTableTableViewController: UITableViewController {
     
     
     var dateRanges = ["All Entries", "Last Week", "Last Month", "Last Quarter", "Last Year"]
+    //Just added
+    var valueToPass:String!
+    
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println("You selected cell #\(indexPath.row)!")
+        
+        // Get Cell Label
+        let indexPath = tableView.indexPathForSelectedRow();
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!;
+        
+        valueToPass = currentCell.textLabel?.text
+        performSegueWithIdentifier("recordsToList", sender: self)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "recordsToList") {
+            
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as AllEntriesTableViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue = valueToPass
+        }
+        
+    }
+    //THIS PROCEEDING
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +73,7 @@ class RecordsTableTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
     
-        //cell.textLabel.text = dateRanges[indexPath.row]
+        cell.textLabel?.text = dateRanges[indexPath.row]
 
         // Configure the cell...
 
