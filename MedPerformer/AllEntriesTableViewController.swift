@@ -11,21 +11,19 @@ import UIKit
 class AllEntriesTableViewController: UITableViewController {
     
     var passedValue = ""
+    var allEntries = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         println(PFUser.currentUser())
         
-                
-        /*var allEntries = [""]            
-            var user = PFUser.currentUser()
+        var user = PFUser.currentUser()
         let event = PFObject(className:"event")
         var query = PFQuery(className:"event")
         query.whereKey("user", equalTo: user)
         query.includeKey("category")
-        let category = event["category"] as NSString
+        let category = event["category"] as NSString!
         query.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]!, error: NSError!) -> Void in
         if error == nil {
@@ -41,7 +39,7 @@ class AllEntriesTableViewController: UITableViewController {
         // Log details of the failure
         NSLog("Error: %@ %@", error, error.userInfo!)
         }
-        }*/
+        }
 
     
 
@@ -72,12 +70,9 @@ class AllEntriesTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        
-        //cell.textLabel.text = "test"
-        
-        // Configure the cell...
-        
+        cell.textLabel!.text = "test"
         return cell
     }
 
